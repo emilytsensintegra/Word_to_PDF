@@ -3,43 +3,80 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Conversor Word ⇆ PDF</title>
+    <title>Conversor Word <-> PDF - Sintegra</title>
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <main class="container">
-      <h1>Conversor de Documentos (Word ⇆ PDF)</h1>
-      <p class="muted">Envie um arquivo Word (.docx) ou PDF e escolha o formato de saída.</p>
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Ferramenta interna Sintegra</p>
+          <h1>Conversor de Documentos Word <-> PDF</h1>
+          <p class="muted">
+            Arraste seu arquivo, escolha o formato desejado e acompanhe o progresso em tempo real. Nada precisa ser instalado no seu computador.
+          </p>
+          <ul class="steps">
+            <li><span>1.</span> Solte ou selecione um arquivo Word/PDF.</li>
+            <li><span>2.</span> Escolha o formato de saida e clique em converter.</li>
+            <li><span>3.</span> Baixe o arquivo convertido assim que a barra chegar a 100%.</li>
+          </ul>
+        </div>
+        <div class="brand">
+          <img src="/img/logo-sintegra.png" alt="Logo Sintegra" />
+        </div>
+      </header>
 
-      <form id="convert-form">
-        <div class="field">
-          <label for="file">Documento:</label>
-          <input id="file" name="file" type="file" accept=".pdf,.doc,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required />
+      <section class="card upload-card">
+        <form id="convert-form">
+          <label id="dropzone" class="dropzone" for="file">
+            <div class="drop-icon" aria-hidden="true">DOC</div>
+            <div class="drop-text">
+              <strong>Arraste e solte um arquivo Word ou PDF</strong>
+              <small>ou clique aqui para procurar no computador</small>
+            </div>
+            <input
+              id="file"
+              name="file"
+              type="file"
+              accept=".pdf,.doc,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+              required
+            />
+          </label>
+          <p id="file-info" class="file-info muted">Nenhum arquivo selecionado.</p>
+
+          <div class="field-group">
+            <label for="target">Converter para</label>
+            <select id="target" name="target">
+              <option value="pdf">PDF (.pdf)</option>
+              <option value="docx">Word (.docx)</option>
+            </select>
+          </div>
+
+          <div class="actions">
+            <button id="submit-btn" type="submit">
+              <span class="btn-label">Converter agora</span>
+              <span class="btn-subtitle">Processo seguro e rapido</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card status-card">
+        <h2>Progresso e resultado</h2>
+        <div id="result" class="result hidden"></div>
+
+        <div id="progress-wrap" class="progress-wrap hidden">
+          <label id="progress-text" for="progress">Progresso: 0%</label>
+          <progress id="progress" max="100" value="0"></progress>
         </div>
 
-        <div class="field">
-          <label for="target">Converter para:</label>
-          <select id="target" name="target">
-            <option value="pdf">PDF (.pdf)</option>
-            <option value="docx">Word (.docx)</option>
-          </select>
+        <div id="download-wrap" class="hidden">
+          <a id="download" class="button" href="#" download>Baixar arquivo convertido</a>
+          <p class="muted tips">Seu arquivo original continua disponivel na pasta de uploads.</p>
         </div>
-
-        <button type="submit">Converter</button>
-      </form>
-
-      <div id="result" class="result hidden"></div>
-
-      <div id="progress-wrap" class="progress-wrap hidden">
-        <label id="progress-text" for="progress">Progresso: 0%</label>
-        <progress id="progress" max="100" value="0"></progress>
-      </div>
-
-      <div id="download-wrap" class="hidden" style="margin-top: 12px;">
-        <a id="download" class="button" href="#" download>Baixar arquivo convertido</a>
-      </div>
+      </section>
     </main>
 
     <script src="/app.js"></script>
   </body>
-  </html>
+</html>
